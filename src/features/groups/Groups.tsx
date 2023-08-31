@@ -1,58 +1,58 @@
 // src/features/groups/Groups.tsx
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Card, CardContent, TextField, Button, Typography, Grid } from '@mui/material';
+import {Card, CardContent, TextField, Button, Typography, Grid, Box} from '@mui/material';
 import { RootState } from '../../app/store';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
-import GroupSearch from "./GroupSearch";
 import GroupAddButton from "./GroupAdd/GroupAddButton";
+import GroupSearchButton from "./GroupSearch/GroupSearchButton";
+import styled from 'styled-components';
+import GroupJoinButton from "./GroupJoin/GroupJoinButton";
+import GroupLeaveButton from "./GroupLeave/GroupLeaveButton";
+import {selectGroup} from "../../slice/groupSlice";
+import GroupCard from "./GroupCard";
 
 const Groups: React.FC = () => {
-    const groups = useSelector((state: RootState) => state.groups);
-    const dispatch = useDispatch();
-    const [groupName, setGroupName] = useState('');
+    const groups = useSelector((state: RootState) => state.groups.groups);
+
+    // 컨테이너를 스타일링하는 컴포넌트 생성
+    const StyledContainer = styled.div`
+  margin-top: 20px;
+  margin-left: 20px; /* 왼쪽 여백 추가 */
+  margin-right: 20px; /* 오른쪽 여백 추가 */
+`;
 
     return (
         <div>
-            <div style={{ marginTop: '20px' }}>
+            <StyledContainer>
                 {groups.map((group) => (
-                    <Grid item xs={6}>
-                        <Card key={group.id} variant="outlined" style={{ marginTop: '10px' }}>
-                            <CardContent>
-                                <Typography variant="h5" component="div">
-                                    {group.groupName}
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                    <Grid container spacing={2} key={group.id}>
+                        <Grid item xs={6}>
+                            <GroupCard group={group}/>
+                        </Grid>
                     </Grid>
                 ))}
-            </div>
+            </StyledContainer>
 
-            <Container maxWidth="sm">
-                {/* 페이지 내용 */}
-            </Container>
             <Paper
                 style={{
                     position: 'fixed',
-                    bottom: '100px', // 하단 여백 조절
-                    right: '16px', // 오른쪽 여백 조절
+                    bottom: '100px',
+                    right: '16px',
                     padding: '16px',
                     backgroundColor: 'white',
-                    zIndex: 999, // 다른 요소 위에 보이도록 설정
-                    boxShadow: 'none', // 그림자 없음
-                    display: 'flex', // Flexbox 사용
-                    flexDirection: 'column', // 수직으로 배치
-                    alignItems: 'center', // 가운데 정렬
+                    zIndex: 999,
+                    boxShadow: 'none',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
                 }}
-                elevation={0} // elevation prop을 0으로 설정하여 그림자를 없앰
+                elevation={0}
             >
-                <GroupSearch />
+                <GroupSearchButton />
                 <GroupAddButton />
             </Paper>
-
-
-
         </div>
     );
 };
