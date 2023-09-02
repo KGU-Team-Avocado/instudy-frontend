@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Profile() {
+function Groups() {
   return (
     <div />
   );
 }
 
-export default Profile;
+export default Groups;
