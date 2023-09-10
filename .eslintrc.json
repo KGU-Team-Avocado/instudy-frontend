@@ -31,7 +31,16 @@
     "@typescript-eslint/comma-dangle": "off",
     "react/jsx-props-no-spreading": "off",
     "import/no-extraneous-dependencies": [0, { "devDependencies": true }],
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "indent": "off",
+    "brace-spacing": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": ["function-declaration", "function-expression", "arrow-function"],
+        "unnamedComponents": ["function-expression", "arrow-function"]
+      }
+    ]
   },
   "overrides": [
     {
