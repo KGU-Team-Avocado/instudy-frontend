@@ -34,6 +34,7 @@
     "react/require-default-props": "off",
     "indent": "off",
     "brace-spacing": "off",
+    "max-len": "off",
     "react/function-component-definition": [
       2,
       {
