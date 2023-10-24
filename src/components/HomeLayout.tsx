@@ -5,16 +5,18 @@ import styled from 'styled-components';
 import Header from './common/Header';
 import Footer from './common/Footer';
 import GroupHeader from './common/GroupHeader';
+import GroupFooter from './common/GroupFooter';
 
 const StyledContainer = styled.div`
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 const StyledContent = styled.div`
-    flex: 1;
-    padding-top: 100px;
+  flex: 1;
+  padding-top: 100px;
 `;
 
 function HomeLayout() {
@@ -30,6 +32,9 @@ function HomeLayout() {
         <Outlet />
       </StyledContent>
       {!location.pathname.startsWith('/group/') && <Footer />}
+      <Routes>
+        <Route path="/group/:groupId" element={<GroupFooter />} />
+      </Routes>
     </StyledContainer>
   );
 }
