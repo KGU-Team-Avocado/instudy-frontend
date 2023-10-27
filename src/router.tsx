@@ -6,7 +6,7 @@ import GroupView from './features/group/GroupView';
 import Jokbo from './features/jokbo/Jokbo';
 import Calendar from './features/calendar/Calendar';
 import Feed from './features/feed/Feed';
-import Timer from './features/timer/Timer';
+import TimerView from './features/timer/TimerView';
 
 const router = createBrowserRouter([
   {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/timer',
-        element: <Timer />,
+        element: <TimerView />,
       },
       {
         path: '/feed',
