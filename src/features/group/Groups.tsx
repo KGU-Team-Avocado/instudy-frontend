@@ -23,13 +23,14 @@ const Groups: React.FC = () => {
   return (
     <div>
       <StyledContainer>
-        {groups.map((group) => (
-          <Grid container spacing={2} key={group.id}>
-            <Grid item xs={6}>
+        <Grid container spacing={2}>
+          {groups.map((group) => (
+            <Grid item xs={6} key={group.id}>
               <GroupCard group={group} />
             </Grid>
-          </Grid>
-        ))}
+
+          ))}
+        </Grid>
       </StyledContainer>
 
       <Paper
