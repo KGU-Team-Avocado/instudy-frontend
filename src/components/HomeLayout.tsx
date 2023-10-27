@@ -1,5 +1,5 @@
 import {
-  Outlet, useLocation, Route, Routes
+  Outlet, Route, Routes
 } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './common/Header';
@@ -21,19 +21,26 @@ const StyledContent = styled.div`
 
 function HomeLayout() {
   // const { groupId } = useParams();
-  const location = useLocation();
   return (
     <StyledContainer>
-      {!location.pathname.startsWith('/group/') && <Header />}
       <Routes>
+        <Route path="/" element={<Header />} />
         <Route path="/group/:groupId" element={<GroupHeader />} />
+        <Route path="/jokbo" element={<GroupHeader />} />
+        <Route path="/calendar" element={<GroupHeader />} />
+        <Route path="/timer" element={<GroupHeader />} />
+        <Route path="/feed" element={<GroupHeader />} />
       </Routes>
       <StyledContent>
         <Outlet />
       </StyledContent>
-      {!location.pathname.startsWith('/group/') && <Footer />}
       <Routes>
+        <Route path="/" element={<Footer />} />
         <Route path="/group/:groupId" element={<GroupFooter />} />
+        <Route path="/jokbo" element={<GroupFooter />} />
+        <Route path="/calendar" element={<GroupFooter />} />
+        <Route path="/timer" element={<GroupFooter />} />
+        <Route path="/feed" element={<GroupFooter />} />
       </Routes>
     </StyledContainer>
   );
